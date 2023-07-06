@@ -613,7 +613,7 @@
         if (IGNORE_TAGS.indexOf(node.parentNode.tagName) === -1 &&
            (node.nodeValue.trim() !== '' || (this.options.allowWhitespaceHighlights && node.nodeValue !== ''))) {
           wrapperClone = wrapper.cloneNode(true);
-          wrapperClone.setAttribute(DATA_ATTR, !! this.options.color);
+          wrapperClone.setAttribute(DATA_ATTR, true);
           nodeParent = node.parentNode;
 
           // highlight if a node is inside the el
