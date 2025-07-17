@@ -501,6 +501,7 @@
    *
    * @param {function} options.onNoRangePresent  Function called before highlight is created and there was no
    *                                             text range selected.
+   * @param {function} options.onDeserializeError Function called when deserialization fails.
    * @class TextHighlighter
    */
   function TextHighlighter(element, options) {
@@ -521,7 +522,8 @@
       onRemoveHighlight: function () { return true; },
       onBeforeHighlight: function () { return true; },
       onAfterHighlight: function () { },
-      onNoRangePresent: function() { }
+      onNoRangePresent: function() { },
+      onDeserializeError: function() { }
     });
 
     dom(this.el).addClass(this.options.contextClass);
@@ -1038,6 +1040,7 @@
         if (console && console.warn) {
           console.warn("Can't deserialize highlight descriptor. Cause: " + e);
         }
+        this.options.onDeserializeError(hlDescriptor);
       }
     }, this);
 
